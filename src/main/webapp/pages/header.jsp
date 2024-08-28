@@ -51,7 +51,7 @@
                         <c:otherwise>
                             <!-- Show User-specific links -->
                             <li><a href="<%= contextPath %>">Home</a></li>
-                            <li><a href="<%= contextPath %>/pages/product.jsp">Products</a></li>
+                            <li><a href="/ProductServlet">Products</a></li>
                             <li><a href="<%= contextPath %>/pages/services.jsp">Services</a></li>
                             <li><a href="<%= contextPath %>/pages/aboutUs.jsp">About Us</a></li>
                             <li><a href="<%= contextPath %>/pages/contactUs.jsp">Contact Us</a></li>

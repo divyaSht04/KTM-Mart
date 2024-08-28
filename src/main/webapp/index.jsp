@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,82 +58,25 @@ String contextPath = (String) request.getContextPath();
 		</section>
 
 		<section id="featured-products">
+		    <c:if test ="${not empty products}">
+
 			<h2>Featured Products</h2>
+
 			<div class="product-slider">
+			<c:forEach var = "product" items="${products}">
 				<div class="product">
 					<img
-						src="https://images.unsplash.com/photo-1579291465309-278e8665628d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+						src="<%= contextPath %>/images/products/${product.imageUrlFromPart}"
 						alt="Antique Singing Bowl" draggable="false" />
 					<div class="info-container">
-						<h3>Antique Singing Bowl</h3>
-						<p>$199.99</p>
+						<h3>${product.name}</h3>
+						<p>$${product.price}</</p>
 					</div>
 					<button>Add to Cart</button>
 				</div>
-				<div class="product">
-					<img
-						src="https://images.unsplash.com/photo-1579291465308-fba6c5db2dfe?q=80&w=1988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						alt="Handwoven Pashmina Shawl" draggable="false" />
-					<div class="info-container">
-						<h3>Handwoven Pashmina Shawl</h3>
-						<p>$89.99</p>
-					</div>
-					<button>Add to Cart</button>
-				</div>
-				<div class="product">
-					<img
-						src="https://images.unsplash.com/photo-1580935297409-cf078c42594e?q=80&w=1926&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						alt="Bronze Buddha Statue" draggable="false" />
-					<div class="info-container">
-						<h3>Bronze Buddha Statue</h3>
-						<p>$299.99</p>
-					</div>
-					<button>Add to Cart</button>
-				</div>
-				<div class="product">
-					<img
-						src="https://images.unsplash.com/photo-1597682886233-61b9023db181?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						alt="Tibetan Prayer Wheel" draggable="false" />
-					<div class="info-container">
-						<h3>Tibetan Prayer Wheel</h3>
-						<p>$149.99</p>
-					</div>
-					<button>Add to Cart</button>
-				</div>
-
-				<div class="product">
-					<img
-						src="https://images.unsplash.com/photo-1597682886233-61b9023db181?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						alt="Tibetan Prayer Wheel" draggable="false" />
-					<div class="info-container">
-						<h3>Tibetan Prayer Wheel</h3>
-						<p>$149.99</p>
-					</div>
-					<button>Add to Cart</button>
-				</div>
-
-				<div class="product">
-					<img
-						src="https://images.unsplash.com/photo-1580935297409-cf078c42594e?q=80&w=1926&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						alt="Bronze Buddha Statue" draggable="false" />
-					<div class="info-container">
-						<h3>Bronze Buddha Statue</h3>
-						<p>$299.99</p>
-					</div>
-					<button>Add to Cart</button>
-				</div>
-
-				<div class="product">
-					<img
-						src="https://images.unsplash.com/photo-1579291465308-fba6c5db2dfe?q=80&w=1988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						alt="Handwoven Pashmina Shawl" draggable="false" />
-					<div class="info-container">
-						<h3>Handwoven Pashmina Shawl</h3>
-						<p>$89.99</p>
-					</div>
-					<button>Add to Cart</button>
-				</div>
+				</c:forEach>
 			</div>
+			</c:if>
 		</section>
 
 		<section id="services">
