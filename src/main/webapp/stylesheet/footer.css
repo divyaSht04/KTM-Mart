@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+:root {
+    --primary-color: #87CEEB;
+    --secondary-color: #FFFFFF;
+    --accent-color: #FFD700;
+    --text-color: #333333;
+    --footer-bg: #2C3E50;
+    --footer-text: #ECF0F1;
+    --font-main: 'Arial', sans-serif;
+    --font-accent: 'Georgia', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+}
+
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 50px 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 0 20px 30px;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.footer-section p {
+    margin-bottom: 15px;
+}
+
+.footer-section.about .contact span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.footer-section.links ul {
+    list-style-type: none;
+}
+
+.footer-section.links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: var(--footer-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--accent-color);
+}
+
+.social-icons {
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.newsletter form {
+    display: flex;
+}
+
+.newsletter input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    width: 200px;
+}
+
+.newsletter button {
+    padding: 10px 15px;
+    background-color: var(--accent-color);
+    border: none;
+    color: var(--footer-bg);
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter button:hover {
+    background-color: #FFE066;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.payment-methods {
+    margin-top: 15px;
+}
+
+.payment-methods h4 {
+    margin-bottom: 10px;
+}
+
+.payment-icons i {
+    font-size: 2rem;
+    margin: 0 10px;
+    color: var(--footer-text);
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin-bottom: 30px;
+    }
+
+    .newsletter input[type="email"] {
+        width: 100%;
+    }
+}

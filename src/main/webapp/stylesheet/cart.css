@@ -1,0 +1,190 @@
+@charset "UTF-8";
+
+/* Color and font variables */
+:root {
+    --primary-color: #3b5998; /* Deep blue */
+    --secondary-color: #f8f9fa; /* Light grey */
+    --accent-color: #ffd700; /* Gold */
+    --text-color: #343a40; /* Dark grey */
+    --muted-text-color: #6c757d; /* Muted grey */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+    --font-accent: 'Georgia', serif;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--secondary-color);
+    margin: 0;
+    padding: 0;
+}
+
+.cart-container {
+    max-width: 1200px; /* Increased max-width for more space */
+    min-width: 900px;  /* Added min-width for better layout */
+    margin: 30px auto;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-title {
+    font-family: var(--font-accent);
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.cart-content {
+    display: flex;
+    justify-content: space-between; /* Aligns items to sides */
+    gap: 30px; /* Space between cart items and order summary */
+}
+
+.cart-items {
+    flex: 2; /* Take up more space */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-card {
+    display: flex;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--secondary-color);
+    transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.02);
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    object-fit: cover;
+}
+
+.product-details {
+    padding: 15px;
+}
+
+.product-title {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 0.9rem;
+    color: var(--muted-text-color);
+    margin-bottom: 10px;
+}
+
+.product-quantity {
+    font-size: 0.9rem;
+    color: var(--muted-text-color);
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.btn-remove {
+    background-color: #e74c3c; /* Bright red */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-remove:hover {
+    background-color: #c0392b; /* Darker red */
+}
+
+.order-summary {
+    flex: 1; /* Takes up less space compared to cart items */
+}
+
+.summary-card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--secondary-color);
+    padding: 20px;
+}
+
+.summary-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.summary-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.btn-primary {
+    background-color: #3b5998; /* Primary blue */
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 15px;
+}
+
+.btn-primary:hover {
+    background-color: #2e477a; /* Darker blue */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cart-content {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+
+    .cart-items, .order-summary {
+        flex: 1;
+        margin-bottom: 20px; /* Add space between sections */
+    }
+
+    .product-card {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .product-image img {
+        border-radius: 10px 10px 0 0; /* Rounded corners on top only */
+    }
+}

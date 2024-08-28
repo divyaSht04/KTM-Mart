@@ -1,0 +1,230 @@
+:root {
+    --primary-color: #87CEEB;
+    --secondary-color: #FFFFFF;
+    --accent-color: #FFD700;
+    --text-color: #333333;
+    --font-main: 'Arial', sans-serif;
+    --font-accent: 'Georgia', serif;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.hero {
+    background-image: url('https://images.unsplash.com/photo-1602915604494-8c6f5a8895d3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-accent);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+section {
+    padding: 4rem 2rem;
+}
+
+h2 {
+    text-align: center;
+    font-family: var(--font-accent);
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.service-grid, .category-grid, .testimonial-grid, .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service-card, .category-card, .testimonial-card, .faq-item {
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover, .category-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-card i, .service-item i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover i, .service-item:hover i {
+    transform: rotate(360deg);
+}
+
+.service-card h3, .category-card h3, .service-item h3 {
+    font-family: var(--font-accent);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.service-card img, .category-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.service-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.service-item {
+    flex-basis: calc(33.333% - 2rem);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.testimonial-card {
+    font-style: italic;
+}
+
+.testimonial-card cite {
+    display: block;
+    font-style: normal;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.faq {
+    padding: 50px 0;
+    background-color: #f7f7f7;
+}
+
+.faq h2 {
+    text-align: center;
+    font-family: var(--font-accent);
+    color: var(--text-color);
+    margin-bottom: 30px;
+}
+
+.faq-box {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    background-color: var(--secondary-color);
+    border: none;
+    outline: none;
+    padding: 20px;
+    text-align: left;
+    font-family: var(--font-main);
+    font-size: 16px;
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #f1f1f1;
+}
+
+.faq-answer {
+    display: none;
+    padding: 20px;
+    font-family: var(--font-main);
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-icon {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+
+.cta {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.cta-buttons {
+    margin-top: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .service-grid, .category-grid, .testimonial-grid, .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-item {
+        flex-basis: 100%;
+    }
+}
