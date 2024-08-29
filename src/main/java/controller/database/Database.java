@@ -80,19 +80,18 @@ public class Database {
     }
 
 	public ArrayList<Product> getAllProducts()  {
-
 		try(Connection conn = getConnection()){
-			PreparedStatement ps = conn.prepareStatement("Select * from Products");
+			PreparedStatement ps = conn.prepareStatement(StringUtils.GET_PRODUCTS);
 			ResultSet rs = ps.executeQuery();
 
 			ArrayList<Product> products = new ArrayList<Product>();
 			while (rs.next()){
 				Product product = new Product();
-				product.setName(rs.getString("name"));
-				product.setPrice(rs.getDouble("price"));
-				product.setDescription(rs.getString("description"));
-				product.setImageUrlFromDB(rs.getString("image"));
-				product.setStock_quantity(rs.getInt("stock_quantity"));
+				product.setName(rs.getString(StringUtils.PRODUCT_NAME));
+				product.setPrice(rs.getDouble(StringUtils.PRODUCT_PRICE));
+				product.setDescription(rs.getString(StringUtils.PRODUCT_DESCRIPTION));
+				product.setImageUrlFromDB(rs.getString(StringUtils.IMAGE));
+				product.setStock_quantity(rs.getInt(StringUtils.PRODUCT_STOCK));
 				products.add(product);
 			}
 
@@ -102,5 +101,21 @@ public class Database {
 			return null;
 		}
 	}
+
+    public int DeleteProduct(int productID){
+        try(Connection conn = getConnection()){
+
+            PreparedStatement ps = conn.prepareStatement(StringUtils.GET_PRODUCT_FROM_ID);
+            ps.setInt(1,productID);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                return 1;
+            }
+            return 0;
+        }catch (Exception ex){
+            System.out.println("The error is: "+ ex.getMessage());
+            return -1;
+        }
+    }
 
 }
