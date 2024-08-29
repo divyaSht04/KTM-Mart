@@ -102,20 +102,38 @@ public class Database {
 		}
 	}
 
-    public int DeleteProduct(int productID){
-        try(Connection conn = getConnection()){
+    public int DeleteProduct(int productID) {
+        // Try-with-resources to automatically close the connection
 
-            PreparedStatement ps = conn.prepareStatement(StringUtils.GET_PRODUCT_FROM_ID);
-            ps.setInt(1,productID);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                return 1;
+        try (Connection conn = getConnection()) {
+
+            String checkProductSQL = StringUtils.GET_PRODUCT_FROM_ID;
+            try (PreparedStatement ps = conn.prepareStatement(checkProductSQL)) {
+                ps.setInt(1, productID);
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (!rs.next()) {
+                        return 0;
+                    }
+                }
             }
-            return 0;
-        }catch (Exception ex){
-            System.out.println("The error is: "+ ex.getMessage());
-            return -1;
+
+            String updateProductSQL = StringUtils.SET_PRODUCT_STATUS;
+            try (PreparedStatement ps2 = conn.prepareStatement(updateProductSQL)) {
+                ps2.setInt(1, productID);
+                int rowsUpdated = ps2.executeUpdate(); // Use executeUpdate for an UPDATE statement
+
+                if (rowsUpdated > 0) {
+                    return 1; // Successful soft delete
+                } else {
+                    return 0; // Product was not updated
+                }
+            }
+
+        } catch (Exception ex) {
+            System.out.println("The error is: " + ex.getMessage());
+            return -1; // Indicating an error occurred
         }
     }
+
 
 }

@@ -34,8 +34,9 @@ public class StringUtils {
 	// database query USERS
 	public static final String INSERT_USER = "Insert into users (full_name, gender, email, phone_number, password, image) values(?,?,?,?,?,?)";
 	public static final String USER_EMAIL = "Select * from users where email = ?";
-	public static final String GET_PRODUCTS = "Select * from products";
-	public static final String GET_PRODUCT_FROM_ID = "Select * from product where product_id = ?";
+	public static final String GET_PRODUCTS = "Select * from products where status = 1";
+	public static final String GET_PRODUCT_FROM_ID = "Select * from products where product_id = ?";
+	public static final String SET_PRODUCT_STATUS = "Update products set status = -1 where product_id = ?";
 	
 	// pages
 	public static final String REGISTER_PAGE = "/pages/register.jsp";

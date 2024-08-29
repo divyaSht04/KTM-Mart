@@ -59,9 +59,7 @@ String contextPath = (String) request.getContextPath();
 
 		<section id="featured-products">
 		    <c:if test ="${not empty products}">
-
 			<h2>Featured Products</h2>
-
 			<div class="product-slider">
 			<c:forEach var = "product" items="${products}">
 				<div class="product">
@@ -74,7 +72,7 @@ String contextPath = (String) request.getContextPath();
 					</div>
 					<button>Add to Cart</button>
 				</div>
-				</c:forEach>
+	        </c:forEach>
 			</div>
 			</c:if>
 		</section>

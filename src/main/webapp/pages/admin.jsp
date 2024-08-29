@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import= "util.StringUtils" %>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -13,16 +14,6 @@
     </head>
     <style>
     <style>
-            .errorBox {
-                position: fixed;
-                top: 0;
-                left: 0;
-                height: 100vh;
-                width: 100%;
-                z-index: 1;
-                background-color: rgba(0, 0, 0, 0.8);
-                display: block;
-            }
             .box {
                 height: 500px;
                 width: 700px;
@@ -55,29 +46,50 @@
                 top: 70%;
                 left: 20%;
             }
-
             .errorBox {
-                animation: fadeIn 0.4s ease;
+                 position: fixed;
+                 top: 0;
+                 left: 0;
+                 height: 100vh;
+                 width: 100%;
+                 z-index: 2;
+                 background-color: rgba(0, 0, 0, 0.8);
+                 display: block;
+                 animation: fadeIn 0.4s ease;
             }
+
+            @keyframes fadeIn {
+             from { opacity: 0; transform: translateY(20px); }
+             to { opacity: 1; transform: translateY(0); }
     </style>
     <body>
-       <%
-        String errorMessage = (String) request.getAttribute(StringUtils.ERROR_MESSAGE);
-
-        if (errorMessage != null && !errorMessage.isEmpty()) {
-        %>
-        <div class="errorBox">
-            <span>&times;</span>
-            <div class="box">
-                <img src="<%= contextPath %>/images/error.png">
-                <h3><%= errorMessage %></h3>
-            </div>
-        </div>
-        <%
-        }
-        %>
-
         <jsp:include page="header.jsp" />
+         <%
+                        String errorMessage = (String) request.getAttribute(StringUtils.ERROR_MESSAGE);
+                        String successMessage = (String) request.getAttribute(StringUtils.SUCCESS_MESSAGE);
+
+                        if (errorMessage != null && !errorMessage.isEmpty()) {
+                        %>
+                        <div class="errorBox">
+                            <span>&times;</span>
+                            <div class="box">
+                                <img src="<%= contextPath %>/images/error.png">
+                                <h3 style="color:black"> <b> <%= errorMessage %> </b> </h3>
+                            </div>
+                        </div>
+                        <%
+                            }else if(successMessage !=null && !successMessage.isEmpty()){
+                        %>
+                         <div class="errorBox">
+                            <span>&times;</span>
+                            <div class="box">
+                               <img src="<%= contextPath %>/images/checkmark.png">
+                               <h3 style="color:black"> <b> <%= errorMessage %> </b> </h3>
+                            </div>
+                         </div>
+                        <%
+                        }
+                        %>
         <div class="admin-dashboard">
             <aside class="sidebar">
                 <div class="sidebar-header">
@@ -145,7 +157,7 @@
                             <h2><i class="fas fa-trash"></i> Delete Product</h2>
                         </div>
                         <div class="card-body">
-                            <form class="form-delete" action="/DeleteProductServlet" method = "GET">
+                            <form class="form-delete" action="<%= contextPath%>/DeleteProductServlet" method = "GET">
                                 <div class="form-group">
                                     <label for="delete-product-id" class="form-label">Product ID:</label>
                                     <input type="text" class="form-input" id="delete-product-id" name="productID" required>
@@ -157,5 +169,15 @@
                 </section>
             </main>
         </div>
+        <script>
+
+                document.querySelector(".errorBox span").onclick = () => {
+                    document.querySelector(".errorBox").style.display = "none";
+                }
+                window.onclick = () =>{
+                	document.querySelector(".errorBox").style.display = "none";
+                }
+
+        </script>
     </body>
 </html>

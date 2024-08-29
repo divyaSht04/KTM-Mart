@@ -27,6 +27,6 @@ public class ProductServlet extends HttpServlet {
         }
 
         request.setAttribute("products", productList);
-        request.getRequestDispatcher(StringUtils.PRODUCT_PAGE).forward(request,response);
+        request.getRequestDispatcher(StringUtils.INDEX_PAGE).forward(request,response);
     }
 }
