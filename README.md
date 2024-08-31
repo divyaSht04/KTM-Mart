@@ -15,5 +15,5 @@ Back-End: Java, SQL
 # How to Contribute
 To contribute to this project, you can clone the repository using the following link:
 
-
+```bash
 Git clone https://github.com/divyaSht04/KTM-Mart.git
